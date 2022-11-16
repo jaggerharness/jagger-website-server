@@ -17,7 +17,19 @@ router.get("/fetchProjects", function (req, res, next) {
     project_description: 'This is a sample second project description. Do you like it?',
     project_link: '/',
   };
+
   let projects = [project, project2];
+
+  for (let i = 0; i < 5000; i++) {
+    let project = {
+      project_title: 'For loop project',
+      project_description: 'This is a sample for loop project description. Do you like it?',
+      project_link: '/',
+    };
+
+    projects.push(project);
+  }
+
   res.send(JSON.stringify({projects: projects}));
 });
 
