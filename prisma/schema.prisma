@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model anime_quotes {
+  id        Int      @id @default(autoincrement())
+  title     String?
+  character String?
+  quote     String?
+  createdAt DateTime @default(now())
+}
