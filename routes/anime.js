@@ -16,7 +16,6 @@ router.get("/", async function (req, res, next) {
   let db = new sqlite3.Database(DBSOURCE, (err) => {
     if (err) {
       // Cannot open database
-      console.log('here');
       console.error(err.message);
       throw err;
     } else {
@@ -26,7 +25,6 @@ router.get("/", async function (req, res, next) {
         (err) => {
           if (err) {
             // Log err
-            console.log('here2');
             console.error(err.message);
           } else {
             // Table created
