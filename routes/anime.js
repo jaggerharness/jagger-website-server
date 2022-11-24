@@ -2,11 +2,16 @@ var express = require("express");
 var router = express.Router();
 const axios = require("axios");
 var sqlite3 = require("sqlite3").verbose();
+const { PrismaClient } = require('@prisma/client');
+
+const prisma = new PrismaClient();
 
 const DBSOURCE = "db.sqlite";
 
 /* GET home page. */
 router.get("/", async function (req, res, next) {
+  const db_data = await prisma.anime_quotes.findMany();
+  console.log(db_data);
   const response = await axios.get("https://animechan.vercel.app/api/random");
   let db = new sqlite3.Database(DBSOURCE, (err) => {
     if (err) {
