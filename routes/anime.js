@@ -11,22 +11,30 @@ const DBSOURCE = "db.sqlite";
 /* GET home page. */
 router.get("/", async function (req, res, next) {
   try {
-    const response = await axios.get("https://animechan.vercel.app/api/random");
-    let db = new sqlite3.Database(DBSOURCE, (err) => {
+    const response = await axios.get(
+      "https://animechan.vercel.app/api/random",
+      {
+        headers: {
+          "Accept-Encoding": "*",
+        },
+      }
+    );
+    let db = new sqlite3.Database(DBSOURCE, async (err) => {
       if (err) {
         // Cannot open database
         console.error(err.message);
         throw err;
       } else {
         try {
-          prisma.anime_quotes.create({
+          await prisma.anime_quotes.create({
             data: {
-              title: JSON.stringify(response.data.anime),
-              character: JSON.stringify(response.data.character),
-              quote: JSON.stringify(response.data.quote),
-            },
+              title: response.data.anime,
+              character: response.data.character,
+              quote: response.data.quote,
+            }
           });
-          console.log("Insert successful");
+          const feed_data = await prisma.anime_quotes.findMany();
+          console.log(feed_data);
         } catch (e) {
           console.log(e.message);
         }
