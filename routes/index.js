@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+const axios = require("axios");
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
@@ -26,5 +27,19 @@ router.get("/fetchFeed", async function (req, res, next) {
   const feed_data = await prisma.anime_quotes.findMany();
   res.send(JSON.stringify({ feed: feed_data }));
 });
+
+router.get("/fetchQuote", async function (req, res, next) {
+  const quote = await axios.get(
+    "https://techy-api.vercel.app/api/json",
+    {
+      headers: {
+        "Accept-Encoding": "*",
+      },
+    }
+  );
+  res.send(JSON.stringify({ quote: quote.data }));
+});
+
+
 
 module.exports = router;
