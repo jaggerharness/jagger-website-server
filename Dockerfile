@@ -1,6 +1,6 @@
 FROM node:19.2.0
-WORKDIR /app
+WORKDIR /
 COPY . .
 RUN npm install
-CMD ["nodemon"]
+CMD ["npm", "start"]
 EXPOSE 8080

@@ -34,7 +34,6 @@ router.get("/", async function (req, res, next) {
             }
           });
           const feed_data = await prisma.anime_quotes.findMany();
-          console.log(feed_data);
         } catch (e) {
           console.log(e.message);
         }
