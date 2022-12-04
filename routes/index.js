@@ -18,7 +18,14 @@ router.get("/fetchProjects", function (req, res, next) {
     project_link: "/anime-feed",
   };
 
-  let projects = [project];
+  const poke_project = {
+    project_title: "Pokémon List",
+    project_description: `The following project functions similarly to the Pokédex. Currently, users are able to search through a paginated list of all available Pokémon from the offical 
+    Pokémon API. Eventually, it will become a clone of the Pokédex, but the complete functionality is still in progress.`,
+    project_link: "/pokemon-list",
+  };
+
+  let projects = [poke_project, project];
 
   res.send(JSON.stringify({ projects: projects }));
 });
