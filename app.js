@@ -11,6 +11,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var connectionRouter = require("./routes/connection");
 var animeRouter = require("./routes/anime");
+var pokemonRouter = require("./routes/pokemon");
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/connection", connectionRouter);
 app.use("/anime", animeRouter);
+app.use("/pokemon", pokemonRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
