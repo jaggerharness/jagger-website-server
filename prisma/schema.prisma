@@ -14,3 +14,11 @@ model anime_quotes {
   quote     String?
   createdAt DateTime @default(now())
 }
+
+model pokemon {
+  id         Int      @id @default(autoincrement())
+  pokemon_id Int      @unique
+  name       String?
+  image_path String?
+  createdAt  DateTime @default(now())
+}

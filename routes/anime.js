@@ -37,21 +37,6 @@ router.get("/", async function (req, res, next) {
         } catch (e) {
           console.log(e.message);
         }
-        // db.run(
-        //   `INSERT INTO anime_quotes (title, character, quote)
-        //     VALUES (${JSON.stringify(response.data.anime)}, ${JSON.stringify(
-        //     response.data.character
-        //   )}, ${JSON.stringify(response.data.quote)});`,
-        //   (err) => {
-        //     if (err) {
-        //       // Log err
-        //       console.error(err.message);
-        //     } else {
-        //       // Table created
-        //       console.log("Insert successful");
-        //     }
-        //   }
-        // );
       }
     });
   } catch (error) {
