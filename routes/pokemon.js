@@ -6,7 +6,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 //Populate database with Pokemon info - Needs refactor
-router.get("/fetchPokemonList", async function (req, res, next) {
+router.get("/refreshPokemonData", async function (req, res, next) {
   try {
     let response = await axios.get("https://pokeapi.co/api/v2/pokemon", {
       headers: {

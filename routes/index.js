@@ -35,6 +35,15 @@ router.get("/fetchFeed", async function (req, res, next) {
   res.send(JSON.stringify({ feed: feed_data }));
 });
 
+router.get("/fetchAllPokemon", async function (req, res, next) {
+  const pokemon_data = await prisma.pokemon.findMany({
+    orderBy: {
+      pokemon_id: 'asc',
+    },
+  });
+  res.send(JSON.stringify({ data: pokemon_data }));
+});
+
 router.get("/fetchQuote", async function (req, res, next) {
   const quote = await axios.get(
     "https://techy-api.vercel.app/api/json",
